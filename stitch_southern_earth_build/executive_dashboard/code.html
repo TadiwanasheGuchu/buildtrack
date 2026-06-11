@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TerraConstruct Executive Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-lowest": "#ffffff",
+                "primary-fixed-dim": "#ffb59f",
+                "on-background": "#1a1c1a",
+                "secondary-fixed-dim": "#c3cb9f",
+                "surface-bright": "#faf9f6",
+                "secondary-fixed": "#e0e7b9",
+                "surface-container-low": "#f4f3f1",
+                "surface-container-high": "#e9e8e5",
+                "surface": "#faf9f6",
+                "on-error": "#ffffff",
+                "on-primary-container": "#fffaf9",
+                "surface-variant": "#e3e2e0",
+                "secondary": "#5b623e",
+                "primary-fixed": "#ffdbd1",
+                "on-primary": "#ffffff",
+                "on-tertiary-fixed": "#241a00",
+                "primary-container": "#bc5434",
+                "error": "#ba1a1a",
+                "inverse-on-surface": "#f2f1ee",
+                "outline": "#8a726b",
+                "on-surface-variant": "#56423c",
+                "on-secondary-fixed": "#181e03",
+                "error-container": "#ffdad6",
+                "secondary-container": "#e0e7b9",
+                "surface-container": "#efeeeb",
+                "tertiary": "#735c00",
+                "inverse-surface": "#2f312f",
+                "tertiary-container": "#cca830",
+                "inverse-primary": "#ffb59f",
+                "on-tertiary-fixed-variant": "#574500",
+                "on-primary-fixed": "#3a0a00",
+                "surface-tint": "#a04021",
+                "tertiary-fixed-dim": "#e9c349",
+                "on-secondary-container": "#616843",
+                "background": "#faf9f6",
+                "surface-dim": "#dbdad7",
+                "on-tertiary": "#ffffff",
+                "on-tertiary-container": "#4f3e00",
+                "tertiary-fixed": "#ffe088",
+                "on-surface": "#1a1c1a",
+                "on-secondary-fixed-variant": "#434a28",
+                "on-secondary": "#ffffff",
+                "primary": "#9c3c1e",
+                "surface-container-highest": "#e3e2e0",
+                "on-primary-fixed-variant": "#81290c",
+                "outline-variant": "#ddc0b8",
+                "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "container-max": "1280px",
+                "margin-desktop": "40px",
+                "stack-lg": "32px",
+                "unit": "8px",
+                "gutter": "24px",
+                "margin-mobile": "16px",
+                "stack-sm": "8px",
+                "stack-md": "16px"
+            },
+            "fontFamily": {
+                "headline-xl": ["Public Sans"],
+                "body-lg": ["Public Sans"],
+                "body-md": ["Public Sans"],
+                "headline-md": ["Public Sans"],
+                "label-md": ["Public Sans"],
+                "caption": ["Public Sans"],
+                "headline-lg-mobile": ["Public Sans"],
+                "headline-lg": ["Public Sans"]
+            },
+            "fontSize": {
+                "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                "caption": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .weather-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.8), rgba(244,243,241,0.6));
+            backdrop-filter: blur(8px);
+        }
+        .shadow-warm {
+            box-shadow: 0 4px 20px -2px rgba(156, 60, 30, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 docked left-0 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant p-stack-md gap-stack-sm sticky top-0">
+<div class="flex items-center gap-3 px-2 mb-8">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined">architecture</span>
+</div>
+<div>
+<h2 class="text-on-surface font-headline-md text-label-md font-bold leading-tight">Southern Ridge</h2>
+<p class="text-on-surface-variant text-caption">Phase 2: Groundwork</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 bg-primary-container text-on-primary-container rounded-lg font-bold translate-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Executive Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+<span class="font-label-md text-label-md">Project Site Feed</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span class="font-label-md text-label-md">Resources &amp; Logistics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Client Portal</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md text-label-md">Logout</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 flex flex-col h-screen overflow-y-auto">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-gutter py-unit w-full sticky top-0 z-40 bg-surface dark:bg-surface-dim shadow-sm">
+<div class="flex items-center gap-gutter">
+<span class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim">TerraConstruct</span>
+<div class="hidden lg:flex items-center bg-surface-container-high rounded-full px-4 py-1.5 gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-64" placeholder="Search projects..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex gap-6 mr-4">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md" href="#">Projects</a>
+<a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors font-label-md" href="#">Analytics</a>
+<a class="text-on-surface-variant font-medium hover:text-primary-container transition-colors font-label-md" href="#">Fleet</a>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-high">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container-high">settings</button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-lg font-label-md hover:opacity-90 active:scale-95 transition-all">New Log</button>
+<img alt="Executive User Profile" class="w-10 h-10 rounded-full border-2 border-outline-variant object-cover ml-2" data-alt="A professional headshot of a senior construction executive wearing a crisp white shirt against a soft bokeh architectural background. The lighting is warm and golden, reflecting a high-end corporate lifestyle. The overall mood is confident, experienced, and authoritative, fitting for an executive dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSmBRkE0HhsxLvQ3IT83oM12MxlNMAOOWDwkU6JyeT3JshNhIq-7up3VgNTZfLR2a1wSPfmf4z0tEsAFf7r4-4JfWp9gLsBOB0aq-J2rJsu9_G6d95f9slNBZOxKtjcNFegmkfeMP1KUjjWi-mA3VPgrZqnzmfyAXXYBS7Vdy3DupHd6yy8Heo_FwbA8uQ1I-cWhlrOMJ-E2pTO3WfD7XIF-kmhY-ZQVNHkhNvtfdlfy0SDxP1fVSiSgtfuNCLuk_qHNm9vouYxGYS"/>
+</div>
+</header>
+<!-- Main Content -->
+<main class="p-gutter lg:p-margin-desktop flex flex-col gap-stack-lg max-w-container-max mx-auto w-full">
+<!-- Hero Greeting & Summary -->
+<section class="flex flex-col md:flex-row justify-between items-start md:items-end gap-stack-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-background">Executive Overview</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">Welcome back. You have 3 projects requiring attention in the SADC region.</p>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+<span class="font-label-md text-label-md text-on-surface">Oct 24, 2023 - Nov 24, 2023</span>
+</div>
+</section>
+<!-- Status Health Cards - Bento Style -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-warm border border-outline-variant flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-caption font-bold">ON TRACK</span>
+</div>
+<div>
+<h3 class="text-headline-xl font-headline-xl text-secondary">14</h3>
+<p class="text-on-surface-variant font-label-md">Healthy Projects</p>
+</div>
+<div class="h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-3/4"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-warm border border-outline-variant flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<span class="bg-tertiary-fixed-dim text-on-tertiary-fixed px-3 py-1 rounded-full text-caption font-bold">AT RISK</span>
+</div>
+<div>
+<h3 class="text-headline-xl font-headline-xl text-tertiary">03</h3>
+<p class="text-on-surface-variant font-label-md">Cautionary Status</p>
+</div>
+<div class="h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-1/4"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-warm border border-outline-variant flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-caption font-bold">DELAYED</span>
+</div>
+<div>
+<h3 class="text-headline-xl font-headline-xl text-error">01</h3>
+<p class="text-on-surface-variant font-label-md">Critical Issues</p>
+</div>
+<div class="h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-error w-[10%]"></div>
+</div>
+</div>
+</section>
+<!-- Dashboard Grid Layout -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Regional Weather Widget -->
+<div class="lg:col-span-1 flex flex-col gap-stack-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-warm border border-outline-variant overflow-hidden">
+<div class="p-gutter border-b border-outline-variant flex items-center justify-between">
+<h2 class="font-headline-md text-headline-md text-on-surface">Regional Weather</h2>
+<span class="material-symbols-outlined text-on-surface-variant">cloud_sync</span>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- City Weather -->
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[32px]">sunny</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Windhoek</p>
+<p class="text-caption text-on-surface-variant">Clear Skies</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-on-surface">32°C</p>
+<p class="text-caption text-on-surface-variant">Wind: 12km/h</p>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary text-[32px]">partly_cloudy_day</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Gaborone</p>
+<p class="text-caption text-on-surface-variant">Mostly Sunny</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-on-surface">34°C</p>
+<p class="text-caption text-on-surface-variant">Wind: 8km/h</p>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[32px]">rainy</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Harare</p>
+<p class="text-caption text-on-surface-variant">Light Rain</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-on-surface">22°C</p>
+<p class="text-caption text-on-surface-variant">Wind: 24km/h</p>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[32px]">cloud</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Cape Town</p>
+<p class="text-caption text-on-surface-variant">Overcast</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-headline-md text-on-surface">19°C</p>
+<p class="text-caption text-on-surface-variant">Wind: 35km/h</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Milestone Timeline -->
+<div class="bg-surface-container-lowest rounded-xl shadow-warm border border-outline-variant p-gutter">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Upcoming Milestones</h2>
+<div class="flex flex-col gap-6 relative">
+<div class="absolute left-4 top-2 bottom-2 w-0.5 bg-outline-variant"></div>
+<div class="relative pl-10">
+<div class="absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full bg-secondary ring-4 ring-white"></div>
+<p class="text-caption text-secondary font-bold uppercase tracking-wider">Tomorrow</p>
+<h4 class="font-label-md text-on-surface mt-1">Foundation Sign-off</h4>
+<p class="text-body-md text-on-surface-variant">Southern Ridge Phase 2</p>
+</div>
+<div class="relative pl-10">
+<div class="absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full bg-tertiary ring-4 ring-white"></div>
+<p class="text-caption text-tertiary font-bold uppercase tracking-wider">Nov 28</p>
+<h4 class="font-label-md text-on-surface mt-1">Material Delivery: Steel</h4>
+<p class="text-body-md text-on-surface-variant">Harare High-Rise Ext.</p>
+</div>
+<div class="relative pl-10">
+<div class="absolute left-2.5 top-1.5 w-3.5 h-3.5 rounded-full bg-outline ring-4 ring-white"></div>
+<p class="text-caption text-on-surface-variant font-bold uppercase tracking-wider">Dec 04</p>
+<h4 class="font-label-md text-on-surface mt-1">Quarterly Safety Audit</h4>
+<p class="text-body-md text-on-surface-variant">Cape Town Logistics Hub</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Projects List -->
+<div class="lg:col-span-2 flex flex-col gap-stack-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-warm border border-outline-variant h-full">
+<div class="p-gutter border-b border-outline-variant flex items-center justify-between bg-surface-container-low/50">
+<h2 class="font-headline-md text-headline-md text-on-surface">Active Projects</h2>
+<button class="text-primary font-label-md hover:underline">View All</button>
+</div>
+<div class="p-gutter flex flex-col gap-6">
+<!-- Project Item -->
+<div class="group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 border border-outline-variant">
+<img alt="Project Site" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A high-angle architectural photograph of a major construction foundation site in a semi-arid African landscape. Earthmoving equipment is visible, and the soil is a rich, reddish-clay color. The lighting is bright morning sun, emphasizing the tactile textures of the groundwork and the precision of the early-stage construction." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7yA_YKGfNGJn_HIfySDRe2dMhC6eu8iQBT-Y2D0NoqcjZH8j7zFbgCe4qqKMHJJwTyf9l9AQKw24fa1K-NOpdUbGakaJyXHHydXR99hpy2o6XvpH2p0aUvNfM8flHgaQ21kKNuBCHN2YAtGz_BohIq_uidzUStv03km5l-ZHs0Z7kE_1Qm7h_a2QT-6WVmi5q-x3JlVUg1oCaLrB7HyCeZPBm-K4edeYGKIBSoVgzjUYFbJwUSlxYAp3K0T7bLeNRN1t3AL1ZYd7s"/>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface">Southern Ridge Residential</h3>
+<p class="text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Windhoek, NA
+                                            </p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-caption font-bold text-on-surface-variant uppercase mb-1">Overall Progress</p>
+<div class="flex items-center gap-3">
+<div class="w-32 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[65%]"></div>
+</div>
+<span class="font-label-md text-secondary">65%</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">history</span>
+<p class="text-body-md text-on-surface"><span class="font-bold">Recent activity:</span> Foundation pour completed on Sector B</p>
+</div>
+<span class="text-caption text-on-surface-variant italic shrink-0">2 hours ago</span>
+</div>
+</div>
+<hr class="border-outline-variant"/>
+<!-- Project Item 2 -->
+<div class="group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 border border-outline-variant">
+<img alt="Project Site" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A photograph of a multi-story steel frame building under construction against a clear blue Zimbabwean sky. Scaffolding is visible, and the site is clean and organized. The light is harsh but clear, casting strong shadows that highlight the structural geometry. The palette is dominated by industrial greys and the natural deep blue of the sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmmN8lUtpeWO1eq2kod6_dwEDhaWmY_0rA_2jhNHsUu_B8HKxsZHpgVU0xMeoSH4XUELKdiVYnk18LZh-R1WPfC_XEkb6XAEkLfV3-1iw3G9RFK43eNMzb-5-IORIoqJHqfC_hVbnXrlxucFmG3JV_LgHTwziT8KX6mN-u3jxXlkhNVESue1feMZaZY49jFb9ywX74S2E2-IZLK2g6KOXrvict6c34vtv0pgeF69WjJrU1PBdlZ_AbABl8XynOLKlD4z0ULyIdMgCy"/>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface">Harare High-Rise Extension</h3>
+<p class="text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Harare, ZW
+                                            </p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-caption font-bold text-on-surface-variant uppercase mb-1">Overall Progress</p>
+<div class="flex items-center gap-3">
+<div class="w-32 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[42%]"></div>
+</div>
+<span class="font-label-md text-tertiary">42%</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">report_problem</span>
+<p class="text-body-md text-on-surface"><span class="font-bold">Recent activity:</span> Logistics delay due to regional heavy rain</p>
+</div>
+<span class="text-caption text-on-surface-variant italic shrink-0">Yesterday</span>
+</div>
+</div>
+<hr class="border-outline-variant"/>
+<!-- Project Item 3 -->
+<div class="group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+<div class="flex gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 border border-outline-variant">
+<img alt="Project Site" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A modern industrial logistics hub construction site featuring large pre-fabricated concrete panels and cranes. The setting is a bright, airy coastal location with soft, diffused sunlight reflecting off white surfaces. The scene is clean, minimal, and highly professional, suggesting a fast-paced but orderly project delivery environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnCPM_izvF5YBAauG7MJ1dcd8X0G3LfISk_wYoBfL92Ye2nf540T7C2d24dPksaiMjPtme6vE8R01V8iI8PsLQd2HQJcPJmoBWiVcgeKxw59RCr-FzsrRltVPTy3ojGsfv2IHfL_YB5gqUhEdtiHMblM0geszVaPH6mGBobNKeyroaajehXrNIkqEzf5BgrWM2kp7Ap4MYuUMFYFAnDtvLzk7_JxeuxyAe_6jpnr4VcnmAA8vNoDuQgxXlEs622ClVXB0331KUL92E"/>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface">Cape Town Logistics Hub</h3>
+<p class="text-body-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Cape Town, ZA
+                                            </p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-caption font-bold text-on-surface-variant uppercase mb-1">Overall Progress</p>
+<div class="flex items-center gap-3">
+<div class="w-32 h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[89%]"></div>
+</div>
+<span class="font-label-md text-secondary">89%</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 flex flex-col sm:flex-row gap-4 items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+<p class="text-body-md text-on-surface"><span class="font-bold">Recent activity:</span> Interior electrical commissioning finalized</p>
+</div>
+<span class="text-caption text-on-surface-variant italic shrink-0">4 days ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Nav for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface-container border-t border-outline-variant flex justify-around p-4 z-50">
+<button class="flex flex-col items-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold uppercase mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant">
+<span class="material-symbols-outlined">photo_camera</span>
+<span class="text-[10px] font-bold uppercase mt-1">Feed</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="text-[10px] font-bold uppercase mt-1">Fleet</span>
+</button>
+<button class="flex flex-col items-center text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase mt-1">Profile</span>
+</button>
+</nav>
+</div>
+<script>
+        // Micro-interactions for buttons and list items
+        document.querySelectorAll('button, a, .cursor-pointer').forEach(el => {
+            el.addEventListener('mousedown', () => {
+                el.classList.add('scale-95');
+            });
+            el.addEventListener('mouseup', () => {
+                el.classList.remove('scale-95');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('scale-95');
+            });
+        });
+
+        // Simple dashboard notification "pulse"
+        const notifyBtn = document.querySelector('.material-symbols-outlined.notifications');
+        if (notifyBtn) {
+            setInterval(() => {
+                notifyBtn.classList.add('text-primary');
+                setTimeout(() => notifyBtn.classList.remove('text-primary'), 500);
+            }, 5000);
+        }
+    </script>
+</body></html>

@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Modern Earth — TerraConstruct Design System
+     * Mapped to Shadcn's CSS-variable convention (HSL, no hsl() wrapper)
+     */
+
+    /* Canvas */
+    --background: 44 27% 97%;           /* #faf9f6  Kalahari Sand  */
+    --foreground: 120 4% 11%;           /* #1a1c1a  Charcoal       */
+
+    /* Cards / Popovers */
+    --card: 0 0% 100%;
+    --card-foreground: 120 4% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 4% 11%;
+
+    /* Primary — Clay Red */
+    --primary: 14 68% 37%;              /* #9c3c1e */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary — Savanna Green */
+    --secondary: 72 22% 31%;            /* #5b623e */
+    --secondary-foreground: 0 0% 100%;
+
+    /* Muted — Light Sand */
+    --muted: 45 13% 93%;                /* #efeeeb */
+    --muted-foreground: 14 18% 29%;     /* #56423c */
+
+    /* Accent — Secondary Container */
+    --accent: 69 49% 82%;               /* #e0e7b9 */
+    --accent-foreground: 71 22% 34%;    /* #616843 */
+
+    /* Destructive — Error Red */
+    --destructive: 0 75% 42%;           /* #ba1a1a */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & Inputs */
+    --border: 13 35% 79%;               /* #ddc0b8  Outline Variant */
+    --input: 13 35% 79%;
+    --ring: 14 68% 37%;                 /* #9c3c1e  Clay Red        */
+
+    /* Shape */
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Public Sans', sans-serif;
+  }
+}
+
+/* ── Material Symbols ─────────────────────────────────────────── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+.icon-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ── Custom shadow ────────────────────────────────────────────── */
+.shadow-warm {
+  box-shadow: 0 4px 20px -2px rgba(156, 60, 30, 0.05);
+}

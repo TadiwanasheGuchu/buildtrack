@@ -1,0 +1,155 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: ['class'],
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: { '2xl': '1400px' },
+    },
+    extend: {
+      colors: {
+        // ── Shadcn semantic tokens (CSS-variable based) ──────────────────
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+        },
+        secondary: {
+          DEFAULT: 'hsl(var(--secondary))',
+          foreground: 'hsl(var(--secondary-foreground))',
+        },
+        destructive: {
+          DEFAULT: 'hsl(var(--destructive))',
+          foreground: 'hsl(var(--destructive-foreground))',
+        },
+        muted: {
+          DEFAULT: 'hsl(var(--muted))',
+          foreground: 'hsl(var(--muted-foreground))',
+        },
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+        popover: {
+          DEFAULT: 'hsl(var(--popover))',
+          foreground: 'hsl(var(--popover-foreground))',
+        },
+        card: {
+          DEFAULT: 'hsl(var(--card))',
+          foreground: 'hsl(var(--card-foreground))',
+        },
+
+        // ── Modern Earth / MD3 custom tokens (existing pages) ────────────
+        'surface-container-lowest': '#ffffff',
+        'surface-container-low': '#f4f3f1',
+        'surface-container': '#efeeeb',
+        'surface-container-high': '#e9e8e5',
+        'surface-container-highest': '#e3e2e0',
+        'surface-dim': '#dbdad7',
+        'surface-bright': '#faf9f6',
+        surface: '#faf9f6',
+        'surface-variant': '#e3e2e0',
+        'surface-tint': '#a04021',
+        'on-surface': '#1a1c1a',
+        'on-surface-variant': '#56423c',
+        'on-background': '#1a1c1a',
+        'inverse-surface': '#2f312f',
+        'inverse-on-surface': '#f2f1ee',
+        'primary-container': '#bc5434',
+        'on-primary': '#ffffff',
+        'on-primary-container': '#fffaf9',
+        'primary-fixed': '#ffdbd1',
+        'primary-fixed-dim': '#ffb59f',
+        'on-primary-fixed': '#3a0a00',
+        'on-primary-fixed-variant': '#81290c',
+        'inverse-primary': '#ffb59f',
+        'secondary-container': '#e0e7b9',
+        'on-secondary': '#ffffff',
+        'on-secondary-container': '#616843',
+        'secondary-fixed': '#e0e7b9',
+        'secondary-fixed-dim': '#c3cb9f',
+        'on-secondary-fixed': '#181e03',
+        'on-secondary-fixed-variant': '#434a28',
+        tertiary: '#735c00',
+        'tertiary-container': '#cca830',
+        'on-tertiary': '#ffffff',
+        'on-tertiary-container': '#4f3e00',
+        'tertiary-fixed': '#ffe088',
+        'tertiary-fixed-dim': '#e9c349',
+        'on-tertiary-fixed': '#241a00',
+        'on-tertiary-fixed-variant': '#574500',
+        error: '#ba1a1a',
+        'error-container': '#ffdad6',
+        'on-error': '#ffffff',
+        'on-error-container': '#93000a',
+        outline: '#8a726b',
+        'outline-variant': '#ddc0b8',
+      },
+
+      borderRadius: {
+        lg: 'var(--radius)',
+        md: 'calc(var(--radius) - 2px)',
+        sm: 'calc(var(--radius) - 4px)',
+        xl: '0.75rem',
+        '2xl': '1rem',
+        full: '9999px',
+      },
+
+      spacing: {
+        'container-max': '1280px',
+        'margin-desktop': '40px',
+        'stack-lg': '32px',
+        unit: '8px',
+        gutter: '24px',
+        'margin-mobile': '16px',
+        'stack-sm': '8px',
+        'stack-md': '16px',
+      },
+
+      fontFamily: {
+        sans: ['"Public Sans"', 'sans-serif'],
+        'headline-xl': ['"Public Sans"'],
+        'headline-lg': ['"Public Sans"'],
+        'headline-lg-mobile': ['"Public Sans"'],
+        'headline-md': ['"Public Sans"'],
+        'body-lg': ['"Public Sans"'],
+        'body-md': ['"Public Sans"'],
+        'label-md': ['"Public Sans"'],
+        caption: ['"Public Sans"'],
+      },
+
+      fontSize: {
+        'headline-xl': ['48px', { lineHeight: '56px', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'headline-lg': ['32px', { lineHeight: '40px', letterSpacing: '-0.01em', fontWeight: '700' }],
+        'headline-lg-mobile': ['28px', { lineHeight: '36px', fontWeight: '700' }],
+        'headline-md': ['24px', { lineHeight: '32px', fontWeight: '600' }],
+        'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }],
+        'body-md': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'label-md': ['14px', { lineHeight: '20px', letterSpacing: '0.05em', fontWeight: '600' }],
+        caption: ['12px', { lineHeight: '16px', fontWeight: '400' }],
+      },
+
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
+    },
+  },
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/forms')],
+}
